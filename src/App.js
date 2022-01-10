@@ -3,11 +3,12 @@ import Movie from './movie-component/Movie';
 import MovieForm from './movie-component/MovieForm';
 import { React, useState } from 'react';
 import Navbar from './movie-component/Navbar';
+import Users from './pages/Users';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-} from 'react-router-dom'
+} from 'react-router-dom';
 
 function App() {
 
@@ -45,11 +46,11 @@ function App() {
             <MovieForm addMovie={addMovie}/>
             {renderMovies}
           </Route>
-          <Route path="/users">
-            <h1>Users</h1>
-          </Route>
           <Route path="/" exact>
             <h1>Home</h1>
+          </Route>
+          <Route path="/users">
+            <Users />
           </Route>
         </Switch>
       </div>
