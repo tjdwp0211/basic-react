@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { Link } from "react-router-dom";
 
 const UserList = ({ users }) => {
     console.log(`users`, users);
@@ -6,11 +7,11 @@ const UserList = ({ users }) => {
     return( 
         <div>
             
-            {users.map(users => {
+            {users.map(user => {
                 return (
-                <div className="card mb-2" key={users.id}>
+                <div className="card mb-2" key={user.id}>
                     <div className="card-body p-3">
-                        {users.name}
+                        <Link to={`users/${user.id}`}>{user.name}</Link>
                     </div>
                 </div>);
         })}
