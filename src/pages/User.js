@@ -2,15 +2,19 @@ import { React, useState ,useEffect } from "react";
 import axios from "axios";
 import UserList from "../movie-component/UserList";
 import { Spinner } from "../movie-component/Spinner";
+import { useParams } from "react-router-dom";
 
-const Users = () => {
-    const [users, setUsers] = useState([]);
+const User = () => {
+    const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const {id} = useParams();
+    console.log(`user`, user)
 
     useEffect(() => {
-        axios.get('https://jsonplaceholder.typicode.com/users')
+        axios.get(`https://jsonplaceholder.typicode.com/users/${id}`)
             .then(res => {
-                setUsers(res.data);
+                console.log(`res`, res);
+                setUser(res.data);
                 setLoading(false);
             });
     }, []);
@@ -18,11 +22,10 @@ const Users = () => {
     return (
 
         <>
-            <h1>Users</h1>
+            <h1>User 정보</h1>
             {loading ? <Spinner /> : null}
-            <UserList users={users}/> 
         </>
     );
 };
 
-export default Users;
+export default User;
