@@ -14,11 +14,11 @@ const Movies = ({  }) => {
       };
 
     const renderMovies = movies.length ? 
-    movies.map((movies) => {
+    movies.map((movie) => {
     return (
       <Movie 
-        movie={movies} 
-        key={movies.id}
+        movie={movie} 
+        key={movie.id}
         removeMovie={removeMovie}
       />
       );
